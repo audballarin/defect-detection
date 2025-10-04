@@ -1,6 +1,19 @@
 # defect-detection
 # Vibration-Data-Driven Detection of 3D Printing Defects
 
+Updates to Proposal Addressing Issue: 
+- I'm narrowing the scope of the project goals to specifically distinguish between normal prints and underextruded prints, rather than a variety of defects. The underextrusion defect will be induced by lowering the flow rate in the print parameters to about 40% and increasing the print speed.
+
+- To address risks to the machine, I will be doing this on a relatively low-cost machine, with shorter prints (i.e. not hours long) and frequent nozzle cleanings (i.e. hot pulls). The main risk to the machine for this type of defect would be heat creep, which would be very minimal for shorter prints and can be mitigated with regular cleaning. 
+
+- To address the accelerometer placement, I've 3D printed a mount for the accelerometer that attaches to a screw already present on the print head; mounting accelerometers on the printer is a common practice for users who use input shaping firmware such as Klipper. These users typically report being able to achieve consistent results in input shaping with this type of mount.
+
+- To address the dataset concerns, so far I have not seen an existing labeled accelerometer dataset (there is one very small unlabeled dataset published -- https://www.iccs-meeting.org/archive/iccs2021/papers/127450633.pdf), so I would still create one on my own, but focusing on only one specific defect induced in the same manner each time allows for a more focused feature of study. There will only be a binary label, so the dataset won't be split as thinly. I will increase the dataset slightly to have more instances of different geometries -- so a larger dataset with at least 3 geometries in training and at least 4 in testing (the training set + one new geometry). 
+
+- Regarding testing metrics, I will report precision, recall, and F1 score to get a clearer picture of how well the model distinguishes the underextrusion defect without false alarms or missed flags. 
+
+
+Original Proposal:
 - Description of the project.
 
 The process of 3D printing produces distinct vibrational patterns. This project would investigate vibration data from 3D printing processes using an accelerometer mounted on the printer. The goal is to train a model that can identify patterns in vibration signals indicating print defects, such as a clogged nozzle or underextrusion. 
