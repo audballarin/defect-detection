@@ -50,7 +50,7 @@ Updated printer.cfg file in Klipper firmware (via Fluidd interface)
 - Examples run on individual fully vs. partially clogged 3d prints:
 ![PCA on snowflake prints](pca_snowflake.png)![PCA loadings for snowflake prints](snowflake_pca_loadings.png)
 ![PCA on octopus prints](pca_octopus.png)![PCA loadings for octopus prints](octopus_pca_loadings.png)
-  - We can see in the examples that while the features tend to be similar in fully clogged vs partially clogged prints, there is some more variance along both PC1 and PC2 in a partially clogged print with extrusion. Of the features, X_rms is the biggest contributor to PC1, which at around 0.38 is a moderate contribution. So far the dataset only contains fully clogged and partially clogged prints — this is promising information as we begin incorporating data from fully normal prints.
+  - We can see in the examples that while the features tend to be similar in fully clogged vs partially clogged prints, there is some more variance along both PC1 and PC2 in a partially clogged print with extrusion. Of the features, X_mean is the biggest contributor to PC1, which at around 0.38 is a moderate contribution. So far the dataset only contains fully clogged and partially clogged prints — this is promising information as we begin incorporating data from fully normal prints.
 
 ## Next Steps
 - **Expand dataset** — the hardware, firmware, and sensor polling setup was an initial challenge that took some time to refine, but now we’re well-positioned to add more prints to the training dataset, especially normal prints. 
