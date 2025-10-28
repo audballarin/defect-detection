@@ -1,6 +1,7 @@
 # defect-detection
 # Midterm Report: Vibration Data-Driven Detection of 3D Printing Defects
 
+Video: https://youtu.be/-jaHxRWc6Xw
 
 ## Background & Motivation Recap
 - The process of 3D printing produces **distinct vibrational profiles** that are most prominent near the nozzle and on the print bed, and can be detected using an accelerometer
