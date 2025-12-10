@@ -42,15 +42,15 @@ Updated printer.cfg file in Klipper firmware (via Fluidd interface)
 ## Preliminary Visualizations
 - The most straightforward way to visualize dense accelerometer data is with a **spectrogram**, computed using Short-Time Fourier Transform, which breaks down raw signals into a range of different frequencies and visualizes the strength of different frequency bands
 - As we can see in **these example of spectrograms** of the **magnitude** (calculated w/ **Euclidean distance** formula) of the acceleration signals for a fully clogged (zero extrusion) snowflake vs partially clogged (weak extrusion) snowflake, there are some differences -- namely, a larger magnitude of signal activity at several frequency bands in the print with a partial clog vs a full clog -- but further modeling is needed to properly identify/interpret the differences
-![Spectrogram of fully clogged snowflake](spectro_snowflake_clog.png) ![Spectrogram of partially clogged snowflake](spectro_snowflake_partial.png)
+![Spectrogram of fully clogged snowflake](images/spectro_snowflake_clog.png) ![Spectrogram of partially clogged snowflake](images/spectro_snowflake_partial.png)
 
 ## Data Modeling & Preliminary Results
 - The main modeling done so far is constructing the **feature vector matrix** with statistical features identified by Li, Yongxiang, et al. (2019) as useful for detecting defects:
   - For each of the X, Y, Z axes: root mean square (RMS), mean, standard deviation, kurtosis, and crest factor
 - Then, to identify which of these features is the most useful for distinguishing states, I ran **Principal Component Analysis** 
 - Examples run on individual fully vs. partially clogged 3d prints:
-![PCA on snowflake prints](pca_snowflake.png)![PCA loadings for snowflake prints](snowflake_pca_loadings.png)
-![PCA on octopus prints](pca_octopus.png)![PCA loadings for octopus prints](octopus_pca_loadings.png)
+![PCA on snowflake prints](images/pca_snowflake.png)![PCA loadings for snowflake prints](images/snowflake_pca_loadings.png)
+![PCA on octopus prints](images/pca_octopus.png)![PCA loadings for octopus prints](images/octopus_pca_loadings.png)
   - We can see in the examples that while the features tend to be similar in fully clogged vs partially clogged prints, there is some more variance along both PC1 and PC2 in a partially clogged print with extrusion. Of the features, X_mean is the biggest contributor to PC1, which at around 0.38 is a moderate contribution. So far the dataset only contains fully clogged and partially clogged prints — this is promising information as we begin incorporating data from fully normal prints.
 
 ## Next Steps
