@@ -1,0 +1,49 @@
+name: Test Offline Rolling Feature Calculation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test-feature-calculation:
+    runs-on: ubuntu-latest
+
+    steps: 
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.9"
+
+    - name: Upgrade pip
+      run: |
+        python -m pip install --upgrade pip
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Run feature calculation script
+      run: |
+        python offline_feature_calc.py \
+          leaf_raw_accel_sample.csv \
+          leaf_sample_features.csv \
+          --print-id leaf \
+          --print-state u \
+          --state-flag 1 \
+          --window 1000 \
+          --step 200
+
+    - name: Verify output file exists
+      run: |
+        if [ ! -f leaf_sample_features.csv ]; then
+          echo "ERROR: leaf_sample_features.csv not found!"
+          exit 1
+        else
+          echo "Success: leaf_sample_features.csv was created."
+        fi    
